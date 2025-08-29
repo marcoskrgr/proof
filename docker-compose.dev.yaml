@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: loan-backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/pom.xml:/app/pom.xml
+      - ./backend/target:/app/target
+    networks:
+      - loan-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: loan-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/package*.json:/app/package*.json
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - loan-network
+    depends_on:
+      - backend
+
+networks:
+  loan-network:
+    driver: bridge

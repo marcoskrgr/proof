@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: loan-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - loan-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: loan-frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - loan-network
+    depends_on:
+      - backend
+
+networks:
+  loan-network:
+    driver: bridge
