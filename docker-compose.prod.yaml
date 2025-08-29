@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile.prod
     container_name: loan-frontend
     ports:
-      - "5173:5173"
+      - "5173:80"
     networks:
       - loan-network
     depends_on:
