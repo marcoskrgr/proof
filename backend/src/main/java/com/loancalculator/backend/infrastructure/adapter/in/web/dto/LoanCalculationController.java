@@ -8,7 +8,6 @@ import com.loancalculator.backend.application.mapper.LoanScheduleEntryMapper;
 import com.loancalculator.backend.application.port.in.LoanCalculationPort;
 import com.loancalculator.backend.domain.model.Loan;
 import com.loancalculator.backend.domain.model.LoanScheduleEntry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
